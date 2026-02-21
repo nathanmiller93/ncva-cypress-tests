@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NCVA Automation – Cypress E2E Tests
 
-## Getting Started
+This repository contains end-to-end (E2E) tests written using Cypress.  
+It is a lightweight automation project focused purely on browser-based testing, without a local application build.
 
-First, run the development server:
+The tests are designed to run against a live website and are intended as a learning, practice, and experimentation space for Cypress-based QA automation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Purpose
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project exists to:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Practice and refresh Cypress E2E automation skills  
+- Explore modern Cypress features and conventions  
+- Maintain a clean, minimal automation-only setup  
+- Avoid unnecessary application or framework dependencies  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+It does not contain a Next.js or React application. Any previous tutorial scaffolding has been intentionally removed.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+cypress/
+e2e/ End-to-end test specs (.cy.js files)
+fixtures/ Test data used by specs
+support/ Custom commands and global test setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+cypress.config.js Cypress configuration
+package.json Project dependencies and scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Requirements
 
-## Deploy on Vercel
+- Node.js (LTS recommended)
+- npm
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Install dependencies from the project root:
+
+npm install
+
+## Running Cypress
+
+Open Cypress in interactive mode:
+
+npx cypress open
+
+Run all tests headlessly (CLI / CI style):
+
+
+## Test Conventions
+
+- Test files follow the `.cy.js` naming convention
+- Tests are written using Cypress’s default BDD-style syntax
+- The project uses Cypress’s modern e2e folder structure
+- No page objects or heavy abstractions are used unless justified
+
+The focus is on clarity, maintainability, and understanding test behaviour.
+
+## Notes
+
+- Generated folders such as `node_modules`, `cypress/videos`, and `cypress/screenshots` are intentionally excluded from version control
+- This repository is not intended to deploy or serve an application
+- The target site under test may change over time
+
+## Status
+
+Active as a personal QA automation sandbox and refresher project.
