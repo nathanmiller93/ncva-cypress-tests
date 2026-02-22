@@ -1,66 +1,131 @@
-# NCVA Automation – Cypress E2E Tests
+# NCVA Cypress Automation
 
-This repository contains end-to-end (E2E) tests written using Cypress.  
-It is a lightweight automation project focused purely on browser-based testing, without a local application build.
+This repository contains end-to-end (E2E) tests written in **Cypress** for the NCVA public website.
 
-The tests are designed to run against a live website and are intended as a learning, practice, and experimentation space for Cypress-based QA automation.
+The focus of this project is:
+- learning Cypress and modern E2E testing
+- safe testing of public-facing pages and forms
+- clean, readable test structure suitable for sharing or reuse
 
-## Purpose
+The tests do **not** submit data, log in, or interact with admin functionality.
 
-This project exists to:
+---
 
-- Practice and refresh Cypress E2E automation skills  
-- Explore modern Cypress features and conventions  
-- Maintain a clean, minimal automation-only setup  
-- Avoid unnecessary application or framework dependencies  
+## Prerequisites
 
-It does not contain a Next.js or React application. Any previous tutorial scaffolding has been intentionally removed.
+Before running this project, make sure the following are installed on your machine.
 
-## Project Structure
+### 1. Node.js (LTS)
+Cypress requires Node.js.
 
-cypress/
-e2e/ End-to-end test specs (.cy.js files)
-fixtures/ Test data used by specs
-support/ Custom commands and global test setup
+- Download Node.js (LTS version):  
+  https://nodejs.org/
+- Verify installation:
 
-cypress.config.js Cypress configuration
-package.json Project dependencies and scripts
+Powershell Terminal
+node -v
+npm -v
 
-## Requirements
+### Installing the Project
 
-- Node.js (LTS recommended)
-- npm
+1. Clone the repository
 
-## Installation
+git clone <your-repo-url>
+cd NCVA-Automation
 
-Install dependencies from the project root:
+2. Install dependencies
+
+This installs Cypress and any supporting packages listed in package.json.
 
 npm install
 
-## Running Cypress
+### Running Cypress
 
-Open Cypress in interactive mode:
+Open Cypress Test Runner (interactive mode)
+
+This is the recommended way to run tests while developing or learning
 
 npx cypress open
 
-Run all tests headlessly (CLI / CI style):
+From the Cypress window:
 
+Choose E2E Testing
 
-## Test Conventions
+Select a browser
 
-- Test files follow the `.cy.js` naming convention
-- Tests are written using Cypress’s default BDD-style syntax
-- The project uses Cypress’s modern e2e folder structure
-- No page objects or heavy abstractions are used unless justified
+Click a test file to run it
 
-The focus is on clarity, maintainability, and understanding test behaviour.
+Run tests in headless mode (optional)
 
-## Notes
+Useful for CI or quick checks.
 
-- Generated folders such as `node_modules`, `cypress/videos`, and `cypress/screenshots` are intentionally excluded from version control
-- This repository is not intended to deploy or serve an application
-- The target site under test may change over time
+npx cypress run
 
-## Status
+Project Structure
 
-Active as a personal QA automation sandbox and refresher project.
+cypress/
+  e2e/
+    01-navigation.cy.js        # Basic navigation / smoke tests
+    02-forms.cy.js             # Safe form interaction and validation tests
+  fixtures/
+    image.png                  # Test image used for upload field
+    job-description.txt        # Example job description text
+  support/
+    commands/
+      cookies.js               # Cookie banner helpers
+      navigation.js            # Navigation helpers
+    e2e.js                     # Support file loaded before tests
+
+### What the Tests Do
+
+Check key public pages load correctly
+
+Navigate between pages
+
+Interact with form fields safely
+
+Upload a test image to a file upload field
+
+Validate UI behaviour (without submitting forms)
+
+### What the Tests Do NOT Do
+
+No form submissions
+
+No login or authentication
+
+No admin or dashboard access
+
+No database or server-side changes
+
+This keeps the tests safe to run against a live public site and suitable for a public repository.
+
+### Code Formatting
+
+This project uses Prettier for formatting.
+
+Recommended VS Code settings:
+
+Prettier – Code formatter extension installed
+
+Format on Save enabled
+
+Formatting will run automatically when saving files.
+
+### Notes
+
+All selectors and assertions are intentionally conservative to avoid flaky tests.
+
+File uploads use Cypress fixtures and do not persist data server-side.
+
+The repository is designed as a learning and demonstration project.
+
+### Troubleshooting
+
+If Cypress does not open:
+
+Ensure Node.js is installed correctly
+
+Delete node_modules and re-run npm install
+
+Run npx cypress verify

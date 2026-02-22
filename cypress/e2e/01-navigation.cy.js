@@ -1,6 +1,6 @@
   describe("NCVA Website checks", () => {
     beforeEach(() => {
-      cy.openHomePage(); // goes to https://www.northumberlandcva.org.uk/
+      cy.openHomePage();
       cy.acceptCookiesIfPresent();
     });
   
@@ -15,6 +15,6 @@
   
     it("Checks contact page", () => {
       cy.openContactPage();
-      cy.contains("01670").should("exist"); // phone number check
+      cy.contains("01670").should("exist");
     });
   });

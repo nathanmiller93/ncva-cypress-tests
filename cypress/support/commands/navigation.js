@@ -9,3 +9,7 @@ Cypress.Commands.add("openVolunteeringPage", () => {
 Cypress.Commands.add("openContactPage", () => {
   cy.visit("/contact-us")
 })
+
+Cypress.Commands.add("openJobSubmissionPage", () => {
+  cy.visit("/submit-a-job")
+})
